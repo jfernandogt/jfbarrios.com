@@ -293,6 +293,18 @@
 		=            Form submit            =
 		===================================*/
 		$('.contact-form').submit(function(e){
+			var $form = $(this),
+				$submit = $form.find('input[type="submit"]');
+			if( $form.valid() ){
+				var dataString = $form.serialize();
+				$.ajax({
+					method: $form.attr('method'),
+					url: $form.attr('action'),
+					data: dataString
+				});
+			}
+		});
+		/*$('.contact-form').submit(function(e){
 			e.preventDefault();
 			var $form = $(this),
 				$submit = $form.find('input[type="submit"]');
@@ -320,7 +332,7 @@
 					}
 				});
 			}
-		});
+		});*/
 
 		/*==============================
 		=            Inputs            =
