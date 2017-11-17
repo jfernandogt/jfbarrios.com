@@ -300,7 +300,7 @@
 				var dataString = $form.serialize();
 				$submit.before('<div class="loader"></div>');
 				$.ajax({
-					type: $form.attr('method'),
+					method: $form.attr('method'),
 					url: $form.attr('action'),
 					data: dataString,
 					success: function() {
