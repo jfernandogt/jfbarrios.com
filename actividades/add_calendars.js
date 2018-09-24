@@ -3,6 +3,8 @@ ics_sources = [
     {url:'calendars/qa-testing.ics', event_properties:{color:'purple'}},
     {url:'calendars/aws.ics', event_properties:{color:'orange'}},
     {url:'calendars/azure.ics', event_properties:{color:'#3a87ad'}},
+    {url:'calendars/blockchain.ics', event_properties:{color:'#647157'}},
+    {url:'calendars/kubernetes.ics', event_properties:{color:'#6B310C'}},
 ]
 
 
