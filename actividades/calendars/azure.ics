@@ -1,0 +1,9 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Meetup//RemoteApi//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-ORIGINAL-URL:https://www.meetup.com/es-ES/Azure-Guatemala/events/ical/
+X-WR-CALNAME:Events - Azure Guatemala
+X-MS-OLK-FORCEINSPECTOROPEN:TRUE
+END:VCALENDAR

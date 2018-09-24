@@ -1,0 +1,40 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Meetup//RemoteApi//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-ORIGINAL-URL:https://www.meetup.com/es-ES/Guatemala-DevOps-Meetup/event
+ s/ical/
+X-WR-CALNAME:Events - Guatemala DevOps Meetup
+X-MS-OLK-FORCEINSPECTOROPEN:TRUE
+BEGIN:VTIMEZONE
+TZID:America/Guatemala
+X-LIC-LOCATION:America/Guatemala
+BEGIN:STANDARD
+TZOFFSETFROM:-0600
+TZOFFSETTO:-0600
+TZNAME:CST
+DTSTART:19700101T000000
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTAMP:20180924T201526Z
+DTSTART;TZID=America/Guatemala:20181017T180000
+DTEND;TZID=America/Guatemala:20181017T210000
+STATUS:CONFIRMED
+SUMMARY:All Day DevOps Viewing Party
+DESCRIPTION:Guatemala DevOps Meetup\nWednesday\, October 17 at 6:00 PM\n\
+ nComo supporters del evento: All Day DevOps (https://www.alldaydevops.co
+ m/) estamos organizando un Viewing party para ver juntos un par de charl
+ as onli...\n\nhttps://www.meetup.com/Guatemala-DevOps-Meetup/events/2548
+ 33513/
+CLASS:PUBLIC
+CREATED:20180919T232400Z
+GEO:14.63;-90.55
+LOCATION:Centro Tics - Intecap (alle del Estadio Mateo Flores 8-79 Zona 5
+ \, Guatemala\, Guatemala)
+URL:https://www.meetup.com/Guatemala-DevOps-Meetup/events/254833513/
+LAST-MODIFIED:20180919T232400Z
+UID:event_254833513@meetup.com
+END:VEVENT
+END:VCALENDAR
