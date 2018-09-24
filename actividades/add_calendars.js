@@ -1,10 +1,11 @@
 ics_sources = [
-    {url:'calendars/frontend.ics', event_properties:{color:'green'}},
-    {url:'calendars/qa-testing.ics', event_properties:{color:'purple'}},
-    {url:'calendars/aws.ics', event_properties:{color:'orange'}},
+    {url:'calendars/frontend.ics', event_properties:{color:'#1a4876'}},
+    {url:'calendars/qa-testing.ics', event_properties:{color:'#7e5fa4'}},
+    {url:'calendars/aws.ics', event_properties:{color:'#ff753b'}},
     {url:'calendars/azure.ics', event_properties:{color:'#3a87ad'}},
     {url:'calendars/blockchain.ics', event_properties:{color:'#647157'}},
     {url:'calendars/kubernetes.ics', event_properties:{color:'#6B310C'}},
+    {url:'calendars/adig.ics', event_properties:{color:'#0c3955'}},
 ]
 
 
