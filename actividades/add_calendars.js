@@ -5,7 +5,7 @@ ics_sources = [
     {url:'calendars/azure.ics', event_properties:{color:'#3a87ad'}},
     {url:'calendars/blockchain.ics', event_properties:{color:'#647157'}},
     {url:'calendars/kubernetes.ics', event_properties:{color:'#6B310C'}},
-    {url:'calendars/adig.ics', event_properties:{color:'#0c3955'}},
+    {url:'https://www.meetup.com/es-ES/Asociacion-de-Informatica-de-Guatemala-ADIG/events/ical', event_properties:{color:'#0c3955'}},
 ]
 
 
