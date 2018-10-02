@@ -25,21 +25,29 @@ function add_recur_events() {
 }
 
 function load_ics(ics){
-    data_req(ics.url, function(){
-        var jsonInfo = JSON.parse(this.response);
-        var eventsToAdd = jsonInfo.map( event => {
-            return {
-                title: event.name,
-                start: moment(event.time).format('YYYY-MM-DD HH:mm:ss'),
-                url: event.link
-            };
-        });
-        $('#calendar').fullCalendar('addEventSource', {
-            events: eventsToAdd,
-            ...ics.event_properties
-        })
-        sources_to_load_cnt -= 1
-    })
+    $.ajax({
+        url: ics.url,
+        headers: {
+            'Authorization': 'Bearer ' + '4e7d112e337c5346367928406143176e'
+        },
+        type: "GET",
+        dataType: "jsonp",
+        success: function(respuesta){
+            var eventsToAdd = respuesta.data.map( event => {
+                return {
+                    title: event.name,
+                    start: moment(event.time).format('YYYY-MM-DD HH:mm:ss'),
+                    url: event.link
+                };
+            });
+
+            $('#calendar').fullCalendar('addEventSource', {
+                events: eventsToAdd,
+                ...ics.event_properties
+            })
+            sources_to_load_cnt -= 1
+        }
+    });
 }
 
 $(document).ready(function() {
