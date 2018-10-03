@@ -1,11 +1,11 @@
 ics_sources = [
-    {url:'https://api.meetup.com/Frontend-Developers-GT/events?photo-host=public&page=20&sig_id=182615343&status=past%2Cupcoming&sig=19e29ff62767572f3e8c45ab14eba1617df8eca4', event_properties:{color:'#1a4876'}},
-    {url:'https://api.meetup.com/Software-QA-and-Testing-Guatemala/events?photo-host=public&page=20&sig_id=182615343&status=past%2Cupcoming&sig=f7e8e501bf37523441850f1d81fa43b25913e40e', event_properties:{color:'#7e5fa4'}},
-    {url:'https://api.meetup.com/AWS-Guatemala/events?photo-host=public&page=20&sig_id=182615343&status=past%2Cupcoming&sig=629bc5bf4ef7aa5b578d6089d42965482b77d693', event_properties:{color:'#ff753b'}},
-    {url:'https://api.meetup.com/Azure-Guatemala/events?photo-host=public&page=20&sig_id=182615343&status=past%2Cupcoming&sig=d6bc8a48883c22150b516c8059a29bf8ce6e64e1', event_properties:{color:'#3a87ad'}},
-    {url:'https://api.meetup.com/Guatemala-Blockchain-Developers/events?photo-host=public&page=20&sig_id=182615343&status=past%2Cupcoming&sig=02c910b574284153aaef101305ebb10bc50d709c', event_properties:{color:'#647157'}},
-    {url:'https://api.meetup.com/Kubernetes-Guatemala/events?photo-host=public&page=20&sig_id=182615343&status=past%2Cupcoming&sig=f2a57e5d1bbbf644b644385eece604a654de388c', event_properties:{color:'#6B310C'}},
-    {url:'https://api.meetup.com/Asociacion-de-Informatica-de-Guatemala-ADIG/events?photo-host=public&page=20&sig_id=182615343&status=past%2Cupcoming&sig=999aa19e4e493aab9e3938abd8787bc4a1053947', event_properties:{color:'#0c3955'}},
+    {url:'https://api.meetup.com/Frontend-Developers-GT/events?photo-host=public&page=20&sig_id=182615343&status=past%2Cupcoming&sig=19e29ff62767572f3e8c45ab14eba1617df8eca4&no_earlier_than=2018-06-01T00%3A00%3A00.000', event_properties:{color:'#1a4876'}},
+    {url:'https://api.meetup.com/Software-QA-and-Testing-Guatemala/events?photo-host=public&page=20&sig_id=182615343&status=past%2Cupcoming&sig=f7e8e501bf37523441850f1d81fa43b25913e40e&no_earlier_than=2018-06-01T00%3A00%3A00.000', event_properties:{color:'#7e5fa4'}},
+    {url:'https://api.meetup.com/AWS-Guatemala/events?photo-host=public&page=20&sig_id=182615343&status=past%2Cupcoming&sig=629bc5bf4ef7aa5b578d6089d42965482b77d693&no_earlier_than=2018-06-01T00%3A00%3A00.000', event_properties:{color:'#ff753b'}},
+    {url:'https://api.meetup.com/Azure-Guatemala/events?photo-host=public&page=20&sig_id=182615343&status=past%2Cupcoming&sig=d6bc8a48883c22150b516c8059a29bf8ce6e64e1&no_earlier_than=2018-06-01T00%3A00%3A00.000', event_properties:{color:'#3a87ad'}},
+    {url:'https://api.meetup.com/Guatemala-Blockchain-Developers/events?photo-host=public&page=20&sig_id=182615343&status=past%2Cupcoming&sig=02c910b574284153aaef101305ebb10bc50d709c&no_earlier_than=2018-06-01T00%3A00%3A00.000', event_properties:{color:'#647157'}},
+    {url:'https://api.meetup.com/Kubernetes-Guatemala/events?photo-host=public&page=20&sig_id=182615343&status=past%2Cupcoming&sig=f2a57e5d1bbbf644b644385eece604a654de388c&no_earlier_than=2018-06-01T00%3A00%3A00.000', event_properties:{color:'#6B310C'}},
+    {url:'https://api.meetup.com/Asociacion-de-Informatica-de-Guatemala-ADIG/events?photo-host=public&page=20&sig_id=182615343&status=past%2Cupcoming&sig=999aa19e4e493aab9e3938abd8787bc4a1053947&no_earlier_than=2018-06-01T00%3A00%3A00.000', event_properties:{color:'#0c3955'}},
 ]
 
 
