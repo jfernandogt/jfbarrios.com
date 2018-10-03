@@ -48,6 +48,13 @@ ics_sources = [
             color:'#0c3955'
         }
     },
+    {
+        name: 'Big-Data-Guatemala',
+        sig: '71450d4e144295717f6534a4b4efd7e9242b0d5e',
+        event_properties: {
+            color:'#ec7676'
+        }
+    },
 ]
 
 
