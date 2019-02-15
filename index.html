@@ -82,7 +82,12 @@
 
           <div class="row">
             <div class="col span_4 center">
-              <div class="site-photo"><img src="images/yo-sitioweb-min_result.webp" width="250" height="250" alt="Photo" class="photo"></div>
+              <div class="site-photo">
+                <img class="lazy photo" src="images/1px.png" data-src="images/yo-sitioweb-min_result.webp" data-srcset="images/yo-sitioweb-min_result.webp 2x,images/yo-sitioweb-min_result.webp 1x" alt="Yo Photo!" width="250" height="250">
+                <noscript>
+                  <img src="images/yo-sitioweb-min_result.webp" width="250" height="250" alt="Photo" class="photo">
+                </noscript>
+              </div>
             </div>
             <div class="col span_8">
               <h3>Acerca de mí:</h3>
@@ -319,28 +324,53 @@
             <blockquote>
               <p>Excelente PROFESIONAL. Agradezco todas las atenciones recibidas y sobre todo su paciencia, su bien trato en los proyectos. Sin duda lo consideramos en nuevas aplicaciones.
               <div class="author">Norals Publicidad / México</div>
-              <div class="site-photo"><img src="images/Humberto_result.webp" width="70" height="70" alt="Imagen de cliente Humberto"></div>
+              <div class="site-photo">
+                <img class="lazy photo" src="images/1px.png" data-src="images/Humberto_result.webp" data-srcset="images/Humberto_result.webp 2x,images/Humberto_result.webp 1x" width="70" height="70" alt="Imagen de cliente Humberto">
+                <noscript>
+                    <img src="images/Humberto_result.webp" width="70" height="70" alt="Imagen de cliente Humberto">
+                </noscript>
+              </div>
             </blockquote>
             <blockquote>
               <p>Trabajo hecho con responsabilidad y con conocimiento sobre el proyecto. Dudas resultas con claridad.
               </p>
               <div class="author">Eligio Monzón / México</div>
-              <div class="site-photo"><img src="images/testimonial-photo-1_result.webp" width="70" height="70" alt="Imagen de cliente Eligio Monzon"></div>
+              <div class="site-photo">
+                <img class="lazy photo" src="images/1px.png" data-src="images/testimonial-photo-1_result.webp" data-srcset="images/testimonial-photo-1_result.webp 2x,images/testimonial-photo-1_result.webp 1x" width="70" height="70" alt="Imagen de cliente Eligio Monzon">
+                <noscript>
+                  <img src="images/testimonial-photo-1_result.webp" width="70" height="70" alt="Imagen de cliente Eligio Monzon">
+                </noscript>
+              </div>
             </blockquote>
             <blockquote>
               <p>Profesional muy responsable y rápido, muy buen trabajó realizado. Siempre atento a todo.
               <div class="author">Antonela / Argentina</div>
-              <div class="site-photo"><img src="images/Antonela_result.webp" width="70" height="70" alt="Imagen de cliente Antonela"></div>
+              <div class="site-photo">
+                <img class="lazy photo" src="images/1px.png" data-src="images/Antonela_result.webp" data-srcset="images/Antonela_result.webp 2x,images/Antonela_result.webp 1x" width="70" height="70" alt="Imagen de cliente Antonela">
+                <noscript>
+                  <img src="images/Antonela_result.webp" width="70" height="70" alt="Imagen de cliente Antonela">
+                </noscript>
+              </div>
             </blockquote>
             <blockquote>
               <p>Un gusto volver a trabajar con esta persona. Muy profesional y rapido.
               <div class="author">B.Y. / Argentina</div>
-              <div class="site-photo"><img src="images/testimonial-photo-3_result.webp" width="70" height="70" alt="Imagen de cliente B.Y."></div>
+              <div class="site-photo">
+                <img class="lazy photo" src="images/1px.png" data-src="images/testimonial-photo-3_result.webp" data-srcset="images/testimonial-photo-3_result.webp 2x,images/testimonial-photo-3_result.webp 1x" width="70" height="70" alt="Imagen de cliente B.Y.">
+                <noscript>
+                  <img src="images/testimonial-photo-3_result.webp" width="70" height="70" alt="Imagen de cliente B.Y.">
+                </noscript>
+              </div>
             </blockquote>
             <blockquote>
               <p>Agradezco mucha su ayuda! muy buen trabajo.
               <div class="author">Dylan Irzi / Colombia</div>
-              <div class="site-photo"><img src="images/Dylan_result.webp" width="70" height="70" alt="Imagen de cliente Dylan"></div>
+              <div class="site-photo">
+                <img class="lazy photo" src="images/1px.png" data-src="images/Dylan_result.webp" data-srcset="images/Dylan_result.webp 2x,images/Dylan_result.webp 1x" width="70" height="70" alt="Imagen de cliente Dylan">
+                <noscript>
+                  <img src="images/Dylan_result.webp" width="70" height="70" alt="Imagen de cliente Dylan">
+                </noscript>
+              </div>
             </blockquote>
           </div>
 
@@ -450,6 +480,31 @@
   <script>
   var galite = galite || {};
   galite.UA = 'UA-86931925-1';
+
+
+  document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target;
+          lazyImage.src = lazyImage.dataset.src;
+          lazyImage.srcset = lazyImage.dataset.srcset;
+          lazyImage.classList.remove("lazy");
+          lazyImageObserver.unobserve(lazyImage);
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage);
+    });
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+});
   </script>
 </body>
 
