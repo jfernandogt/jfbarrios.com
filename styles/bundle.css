@@ -1,5 +1,28 @@
 @charset "UTF-8";
 
+/* Personal image */
+.personal-image {
+  height: 160px;
+}
+
+@media (min-width: 321px) {
+  .personal-image {
+    height: 235px;
+  }
+}
+
+@media (min-width: 768px) {
+  .personal-image {
+    height: 400px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .personal-image {
+    height: 500px;
+  }
+}
+
 /*!
  * animate.css -http://daneden.me/animate
  * Version - 3.5.1
@@ -7936,7 +7959,7 @@ html[style*='margin-right'] .main-nav {
 
 .intro {
   position: relative;
-  padding: 100px 0;
+  padding: 0 0 100px 0;
   z-index: 10;
   text-align: center;
 }
