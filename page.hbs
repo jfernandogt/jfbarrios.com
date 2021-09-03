@@ -1,0 +1,34 @@
+{{!< default}}
+{{#post}}
+<article class="post-section">
+	<div class="post-header item is-hero is-page is-first{{#if feature_image}} is-image{{/if}} {{post_class}}">
+		<div class="item-container global-color">
+			{{#if feature_image}}
+			<div class="item-image global-image global-color">
+				{{>images/post_feature_img}}
+			</div>
+			{{/if}}
+			<div class="item-content">
+				<h1 class="item-title">{{title}}</h1>
+				{{#if custom_excerpt}}
+				<p class="item-excerpt">
+					{{custom_excerpt}}
+				</p>
+				{{/if}}
+			</div>
+		</div>
+	</div>
+	<div class="post-content">
+		{{#if access}}
+		{{content}}
+		{{else}}
+		{{#if html}}
+		<div class="members-teaser">
+			{{{html}}}
+		</div>
+		{{/if}}
+		{{>members/cta}}
+		{{/if}}
+	</div>
+</article>
+{{/post}}

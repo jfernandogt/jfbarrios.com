@@ -1,0 +1,15 @@
+<article class="item-{{@number}}">
+	<h3><a href="{{url}}" class="global-underline">{{title}}</a></h3>
+	{{#unless hide_meta}}
+	<div class="global-meta">
+		{{#has author="count:1"}}
+		{{authors}}
+		{{else has author="count:2"}}
+		{{authors separator=(t " & ")}}
+		{{else has author="count:>2"}}
+		{{authors limit="1"}}
+		{{t "and others"}}
+		{{/has}}
+	</div>
+	{{/unless}}
+</article>

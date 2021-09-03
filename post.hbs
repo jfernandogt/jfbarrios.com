@@ -1,0 +1,74 @@
+{{!< default}}
+{{#post}}
+{{#if access}}
+<progress class="post-progress"></progress>
+{{/if}}
+<article class="post-section">
+	<div class="post-header item is-hero is-first{{#if feature_image}} is-image{{/if}} {{post_class}}">
+		<div class="item-container global-color">
+			{{#if feature_image}}
+			<div class="item-image global-image global-color">
+				{{>images/post_feature_img}}
+			</div>
+			{{/if}}
+			<div class="item-content">
+				<div class="item-meta global-meta">
+					<time datetime="{{date format="YYYY-MM-DD"}}">{{date published_at timeago="true"}}</time>
+					{{t "by"}}
+					{{#has author="count:1"}}
+					{{authors}}
+					{{else has author="count:2"}}
+					{{authors separator=(t " & ")}}
+					{{else has author="count:3"}}
+					{{authors to="2"}} {{t "and"}} {{authors from="3"}}
+					{{else has author="count:>3"}}
+					{{authors}}
+					{{/has}}
+					<span class="global-reading">
+						— {{reading_time minute=(t "1 minute read") minutes=(t "% minutes read")}}
+					</span>
+				</div>
+				<h1 class="item-title">{{title}}</h1>
+				{{#if custom_excerpt}}
+				<p class="item-excerpt">
+					{{custom_excerpt}}
+				</p>
+				{{/if}}
+				{{#if tags}}
+				<div class="item-tags global-tags">
+					{{#foreach tags}}
+					<a href="{{url}}" class="global-tags-hash-sign">{{name}}</a>
+					{{/foreach}}
+				</div>
+				{{/if}}
+			</div>
+		</div>
+	</div>
+	<div class="post-content">
+		{{#if access}}
+		{{content}}
+		{{>post_share}}
+		{{else}}
+		{{#if html}}
+		<div class="members-teaser">
+			{{{html}}}
+		</div>
+		{{/if}}
+		{{>members/cta}}
+		{{/if}}
+	</div>
+</article>
+{{#if access}}
+{{>post_related}}
+{{else}}
+{{>members/post_public}}
+{{/if}}
+{{>post_nextprev}}
+{{#if access}}
+<div class="comments-section">
+	<div class="comments-wrap">
+		{{>services/disqus}}
+	</div>
+</div>
+{{/if}}
+{{/post}}
