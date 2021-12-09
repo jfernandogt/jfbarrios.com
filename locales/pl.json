@@ -82,6 +82,5 @@
     "See plans": "Zobacz plany",
     "You might also like": "Może Ci się sodobać",
     "See our public posts": "Zobacz darmowe artykuły",
-    "All Right Reserved": "All Right Reserved",
-    "Published with {ghost-link}": "Opublikowano z {ghost-link}"
+    "All Right Reserved. Published with {ghost-link} & {theme-name}.": "All Right Reserved. Opublikowano z {ghost-link} & {theme-name}."
 }

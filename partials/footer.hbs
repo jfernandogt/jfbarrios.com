@@ -28,7 +28,11 @@
 		</div>
 	</div>
 	<div class="footer-copyright">
-		{{@site.title}} &copy; {{date format="YYYY"}}. {{t "All Right Reserved"}}.
-		{{{t "Published with {ghost-link}" ghost-link="<a href=\"https://ghost.org\">Ghost</a>"}}}.
+		{{@site.title}} &copy; {{date format="YYYY"}}.
+		{{#if @custom.footer_copyright}}
+		{{{@custom.footer_copyright}}}
+		{{else}}
+		{{{t "All Right Reserved. Published with {ghost-link}." ghost-link="<a href=\"https://ghost.org\" target=\"_blank\" rel=\"noopener noreferrer\">Ghost</a>"}}}
+		{{/if}}
 	</div>
 </footer>

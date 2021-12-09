@@ -1,3 +1,4 @@
+{{#if @custom.search_api_key}}
 <div id="search-section" class="search-section">
 	<span id="search-close" class="search-close">{{>icons/site/close}}</span>
 	<div id="search-content" class="search-content">
@@ -14,12 +15,12 @@
 	</div>
 	<div id="search-overlay" class="search-overlay"></div>
 </div>
-
 {{#contentFor "search_js"}}
 <script>
 const searchPublished = '{{t "Published"}}',
 	  searchUrl = '{{@site.url}}',
-	  searchKey = {{>search_api_key}},
+	  searchKey = "{{@custom.search_api_key}}",
 	  searchAPI = searchUrl+'/ghost/api/v4/content/posts/?key='+searchKey+'&limit=all&fields=url,title,published_at,custom_excerpt,visibility,html';
 </script>
 {{/contentFor}}
+{{/if}}

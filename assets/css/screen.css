@@ -1,6 +1,6 @@
 /* //////////////////////////////////////////////////////////////////////////
 
-   Renge 2.0.1
+   Renge 2.1.0
 
    //////////////////////////////////////////////////////////////////////////
     
@@ -12,7 +12,7 @@
    ├─ Light version
    ├─ Dark version
    ├─ Color version
-   └─ Hide 'Portal' notifications
+   └─ Hiding 'Portal' notifications
 
    II. 3rd party scripts
    |
@@ -133,7 +133,7 @@
 
 /* Dark version
    –––––––––––––––––––––––––––––––––––––––––––––––––––– */
-.global-hash-dark-version {
+.dark-mode {
 
    /* Fonts */
    --color-font-one: #f7f9f9;
@@ -165,7 +165,7 @@
 /* Automatic dark version [duplicate dark version]
    –––––––––––––––––––––––––––––––––––––––––––––––––––– */
 @media (prefers-color-scheme:dark) {
-   .global-hash-auto-dark-version {
+   .auto-dark-mode {
 
       /* Fonts */
       --color-font-one: #f7f9f9;
@@ -295,7 +295,7 @@ body.tag-hash-post-bg-emerald,
    --box-shadow-nav: rgba(0, 0, 0, .12);
 }
 
-/* Hide 'Portal' notifications
+/* Hiding 'Portal' notifications
    –––––––––––––––––––––––––––––––––––––––––––––––––––– */
 iframe[title="portal-notification"] {
    display: none;
@@ -1199,6 +1199,10 @@ small.global-question a:hover {
       display: flex;
       flex-wrap: wrap;
       padding-top: 15px;
+      padding-bottom: 15px;
+   }
+
+   .header-checkbox:checked ~ nav.is-search {
       padding-bottom: 65px;
    }
 
@@ -1260,8 +1264,13 @@ small.global-question a:hover {
       padding: 0;
    }
 
-   .header-nav .signin a,
-   .header-nav .signout a {
+   .header-nav nav:not(.is-search) .signin a,
+   .header-nav nav:not(.is-search) .signout a {
+      margin-right: 0;
+   } 
+
+   .header-nav nav.is-search .signin a,
+   .header-nav nav.is-search .signout a {
       margin-right: 26px;
    }
 

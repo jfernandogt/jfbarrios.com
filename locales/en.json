@@ -82,6 +82,5 @@
     "See plans": "See plans",
     "You might also like": "You might also like",
     "See our public posts": "See our public posts",
-    "All Right Reserved": "All Right Reserved",
-    "Published with {ghost-link}": "Published with {ghost-link}"
+    "All Right Reserved. Published with {ghost-link} & {theme-name}.": "All Right Reserved. Published with {ghost-link} & {theme-name}."
 }
