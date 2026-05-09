@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Mail, Github, Twitter, Linkedin } from "lucide-react";
+import { Mail } from "lucide-react";
+import { GitHubIcon, TwitterXIcon, LinkedInIcon } from "@/components/icons";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -7,7 +8,8 @@ export const Route = createFileRoute("/contact")({
       { title: "Contacto — Alex Carter" },
       {
         name: "description",
-        content: "Contáctame para proyectos, colaboraciones o simplemente para saludar.",
+        content:
+          "Contáctame para proyectos, colaboraciones o simplemente para saludar.",
       },
     ],
   }),
@@ -15,23 +17,45 @@ export const Route = createFileRoute("/contact")({
 });
 
 const channels = [
-  { Icon: Mail, label: "Email", value: "hello@alex.dev", href: "mailto:hello@alex.dev" },
-  { Icon: Github, label: "GitHub", value: "@alexcarter", href: "https://github.com" },
-  { Icon: Twitter, label: "Twitter", value: "@alexcarter", href: "https://twitter.com" },
-  { Icon: Linkedin, label: "LinkedIn", value: "in/alexcarter", href: "https://linkedin.com" },
+  {
+    Icon: Mail,
+    label: "Email",
+    value: "me@jfbarrios.com",
+    href: "mailto:me@jfbarrios.com",
+  },
+  {
+    Icon: GitHubIcon,
+    label: "GitHub",
+    value: "@jfernandogt",
+    href: "https://github.com/jfernandogt",
+  },
+  {
+    Icon: TwitterXIcon,
+    label: "X",
+    value: "@jfergt",
+    href: "https://x.com/jfergt",
+  },
+  {
+    Icon: LinkedInIcon,
+    label: "LinkedIn",
+    value: "in/jfbarrios",
+    href: "https://www.linkedin.com/in/jfbarrios/",
+  },
 ];
 
 function ContactPage() {
   return (
     <section className="mx-auto max-w-3xl px-6 py-24 text-center">
       <div className="animate-fade-up">
-        <p className="font-mono text-xs uppercase tracking-widest text-primary">Contacto</p>
+        <p className="font-mono text-xs uppercase tracking-widest text-primary">
+          Contacto
+        </p>
         <h1 className="mt-3 font-display text-5xl font-bold md:text-6xl">
           Construyamos <span className="text-gradient">algo</span> juntos.
         </h1>
         <p className="mx-auto mt-4 max-w-lg text-muted-foreground">
-          Actualmente estoy abierto a trabajo freelance y colaboraciones interesantes. Elige tu
-          canal favorito a continuación.
+          Actualmente estoy abierto a trabajo freelance y colaboraciones
+          interesantes. Elige tu canal favorito a continuación.
         </p>
       </div>
 

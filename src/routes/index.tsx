@@ -1,23 +1,35 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Github, Twitter, Linkedin, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
+import { GitHubIcon, TwitterXIcon, LinkedInIcon } from "@/components/icons";
 import heroBg from "@/assets/hero-bg.jpg";
-import avatar from "@/assets/avatar.jpg";
+import avatar from "@/assets/avatar.jpeg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Alex Carter — Desarrollador Full-Stack" },
+      { title: "Fernando Barrios — Software Architect & Full-Stack Engineer" },
       {
         name: "description",
         content:
-          "Diseño y construyo aplicaciones web rápidas y accesibles con React, TypeScript y Node.",
+          "Ingeniero de software con más de 14 años de experiencia diseñando e implementando soluciones Full Stack robustas, escalables y de alto impacto.",
       },
     ],
   }),
   component: HomePage,
 });
 
-const stack = ["TypeScript", "React", "Next.js", "Node", "Postgres", "Tailwind", "tRPC", "AWS"];
+const stack = [
+  "TypeScript",
+  "React",
+  "Next.js",
+  "Node.js",
+  "PostgreSQL",
+  "Docker",
+  "Kubernetes",
+  "AWS",
+  "GCP",
+  "Firebase",
+];
 
 function HomePage() {
   return (
@@ -75,7 +87,7 @@ function HomePage() {
             >
               <img
                 src={avatar}
-                alt="Retrato de Alex Carter"
+                alt="Retrato de Fernando Barrios"
                 className="h-full w-full rounded-full object-cover"
                 width={128}
                 height={128}
@@ -91,12 +103,15 @@ function HomePage() {
               Disponible para nuevos proyectos
             </span>
             <h1 className="font-display text-5xl font-bold tracking-tight md:text-7xl">
-              Hola, soy Alex —<br />
-              <span className="text-gradient">construyo cosas para la web.</span>
+              Hola, soy Fernando —<br />
+              <span className="text-gradient">
+                construyo cosas para la web.
+              </span>
             </h1>
             <p className="mx-auto max-w-xl text-lg text-muted-foreground">
-              Ingeniero full-stack creando productos rápidos, hermosos y accesibles. Me encantan
-              TypeScript, los sistemas de diseño y lanzar proyectos propios.
+              Ingeniero de software con más de 14 años de experiencia en diseño,
+              arquitectura y liderazgo de soluciones Full Stack. Apasionado por
+              la innovación, la mentoría y las buenas prácticas de ingeniería.
             </p>
           </div>
 
@@ -118,9 +133,21 @@ function HomePage() {
 
           <div className="flex gap-4 animate-fade-up [animation-delay:360ms]">
             {[
-              { href: "https://github.com", Icon: Github, label: "GitHub" },
-              { href: "https://twitter.com", Icon: Twitter, label: "Twitter" },
-              { href: "https://linkedin.com", Icon: Linkedin, label: "LinkedIn" },
+              {
+                href: "https://github.com/jfernandogt",
+                Icon: GitHubIcon,
+                label: "GitHub",
+              },
+              {
+                href: "https://x.com/jfergt",
+                Icon: TwitterXIcon,
+                label: "X",
+              },
+              {
+                href: "https://www.linkedin.com/in/jfbarrios/",
+                Icon: LinkedInIcon,
+                label: "LinkedIn",
+              },
             ].map(({ href, Icon, label }) => (
               <a
                 key={label}
@@ -162,22 +189,30 @@ function HomePage() {
       <section className="mx-auto max-w-6xl px-6 py-24">
         <div className="grid gap-12 md:grid-cols-2">
           <div className="space-y-4 animate-fade-up">
-            <p className="font-mono text-xs uppercase tracking-widest text-primary">Acerca de</p>
+            <p className="font-mono text-xs uppercase tracking-widest text-primary">
+              Acerca de
+            </p>
             <h2 className="font-display text-4xl font-bold">
-              Ingeniero, diseñador, eterno curioso.
+              Arquitecto de software, líder técnico, eterno curioso.
             </h2>
           </div>
           <div className="space-y-4 text-muted-foreground animate-fade-up [animation-delay:120ms]">
             <p>
-              He pasado los últimos 7 años construyendo productos digitales para startups y equipos
-              en crecimiento. Desde sistemas de diseño hasta APIs de alto rendimiento — me siento
-              cómodo en toda la arquitectura.
+              Con más de 14 años de experiencia Full Stack, he liderado equipos
+              y arquitecturas en startups, banca y empresas de salud. Desde
+              decisiones de arquitectura hasta gobernanza técnica — me muevo con
+              comodidad en toda la pila.
             </p>
             <p>
-              Actualmente enfocado en herramientas de desarrollo con IA y en ayudar a equipos a
-              lanzar más rápido sin sacrificar la calidad.
+              Actualmente como Software Architect en Telus.com, impulso la
+              adopción de flujos de trabajo con IA, establezco estándares de
+              plataforma y alineo la hoja de ruta técnica con los objetivos de
+              negocio.
             </p>
-            <Link to="/projects" className="story-link inline-flex text-foreground">
+            <Link
+              to="/projects"
+              className="story-link inline-flex text-foreground"
+            >
               Ver trabajo seleccionado →
             </Link>
           </div>

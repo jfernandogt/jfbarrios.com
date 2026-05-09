@@ -12,11 +12,14 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 glass">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link to="/" className="flex items-center gap-2 font-display text-lg font-bold">
+        <Link
+          to="/"
+          className="flex items-center gap-2 font-display text-lg font-bold"
+        >
           <span className="grid h-9 w-9 place-items-center rounded-lg bg-[image:var(--gradient-hero)] text-primary-foreground shadow-[var(--shadow-glow)]">
             <Code2 className="h-5 w-5" />
           </span>
-          <span className="text-gradient">alex.dev</span>
+          <span className="text-gradient">jfbarrios.com</span>
         </Link>
         <ul className="flex items-center gap-6 text-sm text-muted-foreground">
           {links.map((l) => (
