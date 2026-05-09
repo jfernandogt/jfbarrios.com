@@ -1,2 +1,5 @@
 node_modules/
 dist/
+
+# Cloudflare Workers local secrets — never commit
+.dev.vars

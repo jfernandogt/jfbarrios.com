@@ -11,6 +11,7 @@ import { lazy, Suspense } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PageTransition } from "@/components/PageTransition";
+import { Toaster } from "@/components/ui/sonner";
 import { fetchPublicationSeo } from "@/lib/hashnode";
 import appCss from "../styles.css?url";
 // LCP image preload URL — imported so Vite hashes it correctly in production.
@@ -189,6 +190,7 @@ function RootComponent() {
         </PageTransition>
         <Footer />
       </div>
+      <Toaster richColors position="bottom-right" />
     </QueryClientProvider>
   );
 }
