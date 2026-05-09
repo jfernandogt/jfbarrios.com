@@ -4,6 +4,10 @@ import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import { ArrowLeft } from "lucide-react";
 import { postQueryOptions } from "@/lib/hashnode";
+// Non-critical CSS: prose styles and hljs syntax highlighting tokens.
+// Loaded only when the user navigates to a blog post — not on the home page.
+// Vite bundles this as a separate async chunk, keeping it off the critical path.
+import "@/styles-blog.css";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: async ({ context: { queryClient }, params: { slug } }) => {
@@ -76,7 +80,9 @@ function PostPage() {
             ))}
           </div>
         )}
-        <h1 className="font-display text-4xl font-bold leading-tight md:text-5xl">{post.title}</h1>
+        <h1 className="font-display text-4xl font-bold leading-tight md:text-5xl">
+          {post.title}
+        </h1>
         <div className="flex items-center gap-4">
           {post.author.profilePicture && (
             <img
@@ -91,7 +97,9 @@ function PostPage() {
             <span>{post.author.name}</span>
             <span>·</span>
             <time dateTime={post.publishedAt}>
-              {format(new Date(post.publishedAt), "dd MMM yyyy", { locale: es })}
+              {format(new Date(post.publishedAt), "dd MMM yyyy", {
+                locale: es,
+              })}
             </time>
             <span>·</span>
             <span>{post.readTimeInMinutes} min de lectura</span>

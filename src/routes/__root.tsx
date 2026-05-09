@@ -7,12 +7,19 @@ import {
   Link,
 } from "@tanstack/react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { lazy, Suspense } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PageTransition } from "@/components/PageTransition";
-import { MouseTrail } from "@/components/MouseTrail";
 import { fetchPublicationSeo } from "@/lib/hashnode";
 import appCss from "../styles.css?url";
+// LCP image preload URL — imported so Vite hashes it correctly in production.
+import heroBgUrl from "../assets/hero-bg.jpg?url";
+
+// MouseTrail is a pure cosmetic effect — defer its JS off the critical path.
+const MouseTrail = lazy(() =>
+  import("@/components/MouseTrail").then((m) => ({ default: m.MouseTrail }))
+);
 
 /** Non-blocking Google Fonts loader (media-swap trick, no render-block). */
 const FONTS_URL =
@@ -66,8 +73,12 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold">Esta página no cargó correctamente</h1>
-        <p className="mt-2 text-sm text-muted-foreground">Intenta recargar la página.</p>
+        <h1 className="text-xl font-semibold">
+          Esta página no cargó correctamente
+        </h1>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Intenta recargar la página.
+        </p>
         <button
           onClick={() => {
             router.invalidate();
@@ -82,50 +93,62 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  /**
-   * Fetch publication-level SEO from Hashnode at the root so every page can
-   * inherit it.  The fetch is fire-and-forget — if Hashnode is unavailable the
-   * loader still resolves with null and we fall back to env / hard-coded values.
-   */
-  loader: async () => {
-    const seo = await fetchPublicationSeo();
-    return { seo };
-  },
-  head: ({ loaderData }) => {
-    const title = loaderData?.seo?.title || DEFAULT_SEO_TITLE;
-    const description = loaderData?.seo?.description || DEFAULT_SEO_DESCRIPTION;
+export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
+  {
+    /**
+     * Fetch publication-level SEO from Hashnode at the root so every page can
+     * inherit it.  The fetch is fire-and-forget — if Hashnode is unavailable the
+     * loader still resolves with null and we fall back to env / hard-coded values.
+     */
+    loader: async () => {
+      const seo = await fetchPublicationSeo();
+      return { seo };
+    },
+    head: ({ loaderData }) => {
+      const title = loaderData?.seo?.title || DEFAULT_SEO_TITLE;
+      const description =
+        loaderData?.seo?.description || DEFAULT_SEO_DESCRIPTION;
 
-    return {
-      meta: [
-        { charSet: "utf-8" },
-        { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { title },
-        { name: "description", content: description },
-        // Open Graph
-        { property: "og:title", content: title },
-        { property: "og:description", content: description },
-        { property: "og:type", content: "website" },
-        // Theme color for mobile browsers (improves Lighthouse PWA/appearance score)
-        { name: "theme-color", content: "#161d2b" },
-      ],
-      links: [
-        { rel: "stylesheet", href: appCss },
-        // Performance: establish early connections to font CDNs
-        { rel: "preconnect", href: "https://fonts.googleapis.com" },
-        { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-        // Performance: hint to preload the font stylesheet so it is discovered
-        // early, but the actual loading is done asynchronously via the inline
-        // script in RootShell — keeping fonts off the render-blocking critical path.
-        { rel: "preload", as: "style", href: FONTS_URL },
-      ],
-    };
-  },
-  shellComponent: RootShell,
-  component: RootComponent,
-  notFoundComponent: NotFoundComponent,
-  errorComponent: ErrorComponent,
-});
+      return {
+        meta: [
+          { charSet: "utf-8" },
+          { name: "viewport", content: "width=device-width, initial-scale=1" },
+          { title },
+          { name: "description", content: description },
+          // Open Graph
+          { property: "og:title", content: title },
+          { property: "og:description", content: description },
+          { property: "og:type", content: "website" },
+          // Theme color for mobile browsers (improves Lighthouse PWA/appearance score)
+          { name: "theme-color", content: "#161d2b" },
+        ],
+        links: [
+          { rel: "stylesheet", href: appCss },
+          // Performance: preload the LCP hero image so the browser fetches it
+          // as soon as the HTML is parsed — before the JS bundle runs.
+          { rel: "preload", as: "image", href: heroBgUrl },
+          // Performance: establish early connections to font CDNs before the
+          // async font-loader script fires.
+          { rel: "preconnect", href: "https://fonts.googleapis.com" },
+          {
+            rel: "preconnect",
+            href: "https://fonts.gstatic.com",
+            crossOrigin: "anonymous",
+          },
+          // NOTE: We intentionally do NOT add a rel="preload" for the Google
+          // Fonts stylesheet here. The font is loaded asynchronously via the
+          // inline script below (media="print" trick). A preload hint without a
+          // matching synchronous <link> generates a browser warning and wastes
+          // a high-priority fetch slot.
+        ],
+      };
+    },
+    shellComponent: RootShell,
+    component: RootComponent,
+    notFoundComponent: NotFoundComponent,
+    errorComponent: ErrorComponent,
+  }
+);
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
@@ -155,7 +178,10 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
-      <MouseTrail />
+      {/* Suspense is required for lazy() — MouseTrail renders nothing until loaded */}
+      <Suspense fallback={null}>
+        <MouseTrail />
+      </Suspense>
       <div className="flex min-h-screen flex-col">
         <Header />
         <PageTransition>
