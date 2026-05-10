@@ -15,7 +15,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { fetchPublicationSeo } from "@/lib/hashnode";
 import appCss from "../styles.css?url";
 // LCP image preload URL — imported so Vite hashes it correctly in production.
-import heroBgUrl from "../assets/hero-bg.jpg?url";
+import heroBgUrl from "../assets/hero-bg.webp?url";
 
 // MouseTrail is a pure cosmetic effect — defer its JS off the critical path.
 const MouseTrail = lazy(() =>

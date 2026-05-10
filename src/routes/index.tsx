@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { GitHubIcon, TwitterXIcon, LinkedInIcon } from "@/components/icons";
-import heroBg from "@/assets/hero-bg.jpg";
-import avatar from "@/assets/avatar.jpeg";
+import heroBg from "@/assets/hero-bg.webp";
+import avatar from "@/assets/avatar.webp";
 
 export const Route = createFileRoute("/")({
   head: () => ({
