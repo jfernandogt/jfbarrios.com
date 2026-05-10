@@ -17,7 +17,7 @@ export function Footer() {
     <footer className="mt-24 border-t border-border/60">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-8 sm:flex-row">
         <p className="text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Alex Carter. Hecho con cariño.
+          © {new Date().getFullYear()} Fernando Barrios. Hecho con cariño.
         </p>
         <div className="flex items-center gap-3">
           {socials.map(({ href, Icon, label }) => (

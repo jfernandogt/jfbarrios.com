@@ -4,10 +4,11 @@ import { ArrowUpRight } from "lucide-react";
 export const Route = createFileRoute("/projects")({
   head: () => ({
     meta: [
-      { title: "Proyectos — Alex Carter" },
+      { title: "Proyectos — Fernando Barrios" },
       {
         name: "description",
-        content: "Proyectos seleccionados y experimentos propios de Alex Carter.",
+        content:
+          "Proyectos seleccionados y experimentos propios de Fernando Barrios.",
       },
     ],
   }),
@@ -53,10 +54,15 @@ function ProjectsPage() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-20">
       <header className="mb-14 max-w-2xl animate-fade-up">
-        <p className="font-mono text-xs uppercase tracking-widest text-primary">Proyectos</p>
-        <h1 className="mt-3 font-display text-5xl font-bold">Cosas que he construido.</h1>
+        <p className="font-mono text-xs uppercase tracking-widest text-primary">
+          Proyectos
+        </p>
+        <h1 className="mt-3 font-display text-5xl font-bold">
+          Cosas que he construido.
+        </h1>
         <p className="mt-4 text-muted-foreground">
-          Algunos proyectos seleccionados de trabajo con clientes y experimentos propios.
+          Algunos proyectos seleccionados de trabajo con clientes y experimentos
+          propios.
         </p>
       </header>
 
@@ -73,10 +79,14 @@ function ProjectsPage() {
             />
             <div className="relative">
               <div className="flex items-start justify-between">
-                <h3 className="font-display text-2xl font-semibold">{p.title}</h3>
+                <h3 className="font-display text-2xl font-semibold">
+                  {p.title}
+                </h3>
                 <ArrowUpRight className="h-5 w-5 text-muted-foreground transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-primary" />
               </div>
-              <p className="mt-3 text-sm text-muted-foreground">{p.description}</p>
+              <p className="mt-3 text-sm text-muted-foreground">
+                {p.description}
+              </p>
               <div className="mt-6 flex flex-wrap gap-2">
                 {p.tags.map((t) => (
                   <span
