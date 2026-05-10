@@ -7,7 +7,7 @@ import {
   Link,
 } from "@tanstack/react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PageTransition } from "@/components/PageTransition";
@@ -36,6 +36,15 @@ const fontsLoaderScript = `
   document.head.appendChild(l);
 })();
 `;
+
+// ── Google Analytics 4 ──────────────────────────────────────────────────────
+// Set VITE_GA_MEASUREMENT_ID in your .env and Cloudflare Workers env vars.
+// If the variable is absent (e.g. local dev) no analytics code is injected.
+const GA_ID = import.meta.env.VITE_GA_MEASUREMENT_ID as string | undefined;
+
+const gtagInitScript = GA_ID
+  ? `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}',{send_page_view:false});`
+  : "";
 
 // ── SEO defaults ────────────────────────────────────────────────────────────
 // These are used when Hashnode's publication SEO fields are not set.
@@ -157,6 +166,21 @@ function RootShell({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
         {/*
+         * Google Analytics 4 — async, non-blocking.
+         * Only injected when VITE_GA_MEASUREMENT_ID is set (absent in local dev).
+         * send_page_view:false prevents the automatic initial hit; we fire page
+         * views manually on each route change so SPA navigation is tracked correctly.
+         */}
+        {GA_ID && (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+            />
+            <script dangerouslySetInnerHTML={{ __html: gtagInitScript }} />
+          </>
+        )}
+        {/*
          * Performance: load Google Fonts off the render-blocking critical path
          * using the media="print" → onload swap trick. This prevents fonts from
          * delaying First Contentful Paint while still applying as soon as they
@@ -177,6 +201,24 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+
+  // Track SPA page views on every route navigation.
+  // GA4 cannot detect client-side routing automatically, so we fire
+  // a page_view event manually each time TanStack Router finishes loading a route.
+  useEffect(() => {
+    if (!GA_ID) return;
+    const unsub = router.subscribe("onLoad", ({ toLocation }) => {
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "page_view", {
+          page_path: toLocation.pathname,
+          page_search: toLocation.search,
+        });
+      }
+    });
+    return unsub;
+  }, [router]);
+
   return (
     <QueryClientProvider client={queryClient}>
       {/* Suspense is required for lazy() — MouseTrail renders nothing until loaded */}

@@ -6,4 +6,22 @@
   "main": "src/server.ts",
   "workers_dev": false,
   "routes": [{ "pattern": "jfbarrios.com", "custom_domain": true }],
+  "vars": {
+    "VITE_GA_MEASUREMENT_ID": "G-Z2SLF2Q7XP",
+  },
+  "observability": {
+    "enabled": false,
+    "head_sampling_rate": 1,
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1,
+      "persist": true,
+      "invocation_logs": true,
+    },
+    "traces": {
+      "enabled": false,
+      "persist": true,
+      "head_sampling_rate": 1,
+    },
+  },
 }
