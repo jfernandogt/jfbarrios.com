@@ -19,7 +19,7 @@ export function Header() {
           <span className="grid h-9 w-9 place-items-center rounded-lg bg-[image:var(--gradient-hero)] text-primary-foreground shadow-[var(--shadow-glow)]">
             <Code2 className="h-5 w-5" />
           </span>
-          <span className="text-gradient">jfbarrios.com</span>
+          <span className="hidden text-gradient sm:inline">jfbarrios.com</span>
         </Link>
         <ul className="flex items-center gap-6 text-sm text-muted-foreground">
           {links.map((l) => (

@@ -42,8 +42,35 @@ const fontsLoaderScript = `
 // If the variable is absent (e.g. local dev) no analytics code is injected.
 const GA_ID = import.meta.env.VITE_GA_MEASUREMENT_ID as string | undefined;
 
-const gtagInitScript = GA_ID
-  ? `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}',{send_page_view:false});`
+/**
+ * Idle-load GA4 after the page is fully interactive.
+ *
+ * We use requestIdleCallback (with a setTimeout fallback) so the browser
+ * fetches gtag/js only when it has spare CPU cycles — completely off the
+ * critical rendering path. This prevents PageSpeed / Lighthouse from flagging
+ * the 151 KB gtag bundle as unused JavaScript on LCP/FCP.
+ *
+ * The dataLayer stub is initialised synchronously so any events queued before
+ * the script loads are replayed once it arrives.
+ */
+const gtagLoaderScript = GA_ID
+  ? `
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','${GA_ID}',{send_page_view:false});
+function _loadGtag(){
+  var s=document.createElement('script');
+  s.src='https://www.googletagmanager.com/gtag/js?id=${GA_ID}';
+  s.async=true;
+  document.head.appendChild(s);
+}
+if('requestIdleCallback' in window){
+  requestIdleCallback(_loadGtag,{timeout:4000});
+}else{
+  setTimeout(_loadGtag,3500);
+}
+`.trim()
   : "";
 
 // ── SEO defaults ────────────────────────────────────────────────────────────
@@ -166,19 +193,14 @@ function RootShell({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
         {/*
-         * Google Analytics 4 — async, non-blocking.
+         * Google Analytics 4 — idle-loaded, zero render-blocking impact.
          * Only injected when VITE_GA_MEASUREMENT_ID is set (absent in local dev).
-         * send_page_view:false prevents the automatic initial hit; we fire page
-         * views manually on each route change so SPA navigation is tracked correctly.
+         * The dataLayer stub + config are set synchronously; the heavy gtag/js
+         * script (~151 KB) is fetched via requestIdleCallback so it never appears
+         * on the critical path and PageSpeed won't flag it as unused JS on LCP/FCP.
          */}
         {GA_ID && (
-          <>
-            <script
-              async
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-            />
-            <script dangerouslySetInnerHTML={{ __html: gtagInitScript }} />
-          </>
+          <script dangerouslySetInnerHTML={{ __html: gtagLoaderScript }} />
         )}
         {/*
          * Performance: load Google Fonts off the render-blocking critical path
