@@ -79,10 +79,11 @@ if('requestIdleCallback' in window){
 // .env file (or the Cloudflare Workers / Wrangler environment variables).
 
 const DEFAULT_SEO_TITLE =
-  import.meta.env.VITE_SEO_TITLE ?? "JF Barrios — Desarrollador Full-Stack";
+  import.meta.env.VITE_SEO_TITLE ??
+  "Fernando Barrios — Desarrollador Full-Stack";
 const DEFAULT_SEO_DESCRIPTION =
   import.meta.env.VITE_SEO_DESCRIPTION ??
-  "Portafolio, blog y proyectos de JF Barrios — construyendo experiencias web increíbles.";
+  "Portafolio, blog y proyectos de Fernando Barrios — construyendo experiencias web increíbles.";
 
 function NotFoundComponent() {
   return (

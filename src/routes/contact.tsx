@@ -18,7 +18,7 @@ import { Label } from "@/components/ui/label";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contacto — JF Barrios" },
+      { title: "Contacto — Fernando Barrios" },
       {
         name: "description",
         content:

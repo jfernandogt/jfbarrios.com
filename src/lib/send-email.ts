@@ -27,12 +27,6 @@ export const sendContactEmail = createServerFn({ method: "POST" })
       throw new Error("El servicio de correo no está configurado.");
     }
 
-    // NOTE: The `from` address must use a domain verified in your Resend account.
-    // During development you can use "onboarding@resend.dev" but the `to` address
-    // MUST be the same email you used to sign up for Resend (free-tier restriction).
-    // Once you verify jfbarrios.com in Resend → Domains, change this to:
-    //   from: "JF Barrios <me@jfbarrios.com>"
-    //   to:   ["me@jfbarrios.com"]
     const payload = {
       from: "Contacto Web <onboarding@resend.dev>",
 

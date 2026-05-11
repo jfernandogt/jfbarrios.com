@@ -5,13 +5,15 @@ import { es } from "date-fns/locale";
 import { postsQueryOptions } from "@/lib/hashnode";
 
 export const Route = createFileRoute("/blog/")({
-  loader: ({ context: { queryClient } }) => queryClient.ensureQueryData(postsQueryOptions()),
+  loader: ({ context: { queryClient } }) =>
+    queryClient.ensureQueryData(postsQueryOptions()),
   head: () => ({
     meta: [
-      { title: "Blog — JF Barrios" },
+      { title: "Blog — Fernando Barrios" },
       {
         name: "description",
-        content: "Notas extensas sobre ingeniería, diseño y construcción de productos.",
+        content:
+          "Notas extensas sobre ingeniería, diseño y construcción de productos.",
       },
     ],
   }),
@@ -24,7 +26,9 @@ function BlogPage() {
   return (
     <section className="mx-auto max-w-3xl px-6 py-20">
       <header className="mb-12 animate-fade-up">
-        <p className="font-mono text-xs uppercase tracking-widest text-primary">Escritura</p>
+        <p className="font-mono text-xs uppercase tracking-widest text-primary">
+          Escritura
+        </p>
         <h1 className="mt-3 font-display text-5xl font-bold">Blog.</h1>
         <p className="mt-4 text-muted-foreground">
           Notas extensas sobre ingeniería, diseño y construcción de productos.
@@ -32,7 +36,9 @@ function BlogPage() {
       </header>
 
       {posts.length === 0 ? (
-        <p className="py-12 text-center text-muted-foreground">Aún no hay publicaciones.</p>
+        <p className="py-12 text-center text-muted-foreground">
+          Aún no hay publicaciones.
+        </p>
       ) : (
         <ul className="divide-y divide-border/60">
           {posts.map((post, i) => (
@@ -48,7 +54,9 @@ function BlogPage() {
               >
                 <div className="flex items-center gap-3 font-mono text-xs text-muted-foreground">
                   <time dateTime={post.publishedAt}>
-                    {format(new Date(post.publishedAt), "dd MMM yyyy", { locale: es })}
+                    {format(new Date(post.publishedAt), "dd MMM yyyy", {
+                      locale: es,
+                    })}
                   </time>
                   <span>·</span>
                   <span>{post.readTimeInMinutes} min de lectura</span>
