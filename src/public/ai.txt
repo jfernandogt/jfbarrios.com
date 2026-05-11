@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /private/
+Allow: /
+Crawl-delay: 10
+Intent: Professional Portfolio and Services
