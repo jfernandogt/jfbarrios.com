@@ -1,19 +1,20 @@
 # jfbarrios.com - Software Architecture & Development
 
-> Juan Fernando Barrios es Arquitecto de Software Senior con +14 años de experiencia, basado en Ciudad de Guatemala. Especialista en arquitecturas escalables, aplicaciones móviles y web.
+> Juan Fernando Barrios es Arquitecto de Software Senior con más de 14 años de experiencia, basado en Ciudad de Guatemala. Especialista en arquitecturas escalables, aplicaciones móviles y web.
 
 ## Servicios Principales
-- Desarrollo de Aplicaciones Móviles (iOS/Android).
-- Arquitectura de Software y Consultoría Técnica.
-- Desarrollo de Landing Pages de alto rendimiento.
-- Desarrollo de aplicaciones Web con React y TanStack.
-- Desarrollo de backend con NodeJS
+- Desarrollo de Aplicaciones Móviles (iOS/Android) con React Native y Flutter.
+- Arquitectura de Software y Consultoría Técnica Senior.
+- Desarrollo de Landing Pages y Sitios Web de alto rendimiento.
+- Desarrollo de aplicaciones Web modernas con React, Vite y TanStack.
+- Desarrollo de backend robusto con Node.js y microservicios.
 
 ## Stack Tecnológico
-- Frontend: React, Vite, TanStack, Tailwind CSS.
+- Frontend: React, Vite, TanStack (Query/Router), Tailwind CSS.
 - Mobile: Flutter, React Native.
-- Backend/Infra: Proxmox, Docker, Arquitecturas de microservicios.
+- Infraestructura: Docker, Proxmox, CI/CD, Arquitecturas Cloud.
 
 ## Contacto y Enlaces
-- Web: https://jfbarrios.com
+- Web oficial: https://jfbarrios.com
 - Ubicación: Ciudad de Guatemala, Guatemala.
+- Disponibilidad: Consultoría técnica y proyectos cerrados.
