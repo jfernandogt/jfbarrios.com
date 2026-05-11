@@ -204,10 +204,10 @@ function HomePage() {
               comodidad en toda la pila.
             </p>
             <p>
-              Actualmente como Software Architect en Telus.com, impulso la
-              adopción de flujos de trabajo con IA, establezco estándares de
-              plataforma y alineo la hoja de ruta técnica con los objetivos de
-              negocio.
+              Actualmente como Software Architect para una empresa de
+              Telecomunicaciones, impulso la adopción de flujos de trabajo con
+              IA, establezco estándares de plataforma y alineo la hoja de ruta
+              técnica con los objetivos de negocio.
             </p>
             <Link
               to="/projects"

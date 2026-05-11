@@ -13,6 +13,7 @@ import { Footer } from "@/components/Footer";
 import { PageTransition } from "@/components/PageTransition";
 import { Toaster } from "@/components/ui/sonner";
 import { fetchPublicationSeo } from "@/lib/hashnode";
+import { schemaMarkupScript } from "@/components/SchemaMarkup";
 import appCss from "../styles.css?url";
 // LCP image preload URL — imported so Vite hashes it correctly in production.
 import heroBgUrl from "../assets/hero-bg.webp?url";
@@ -179,6 +180,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           // matching synchronous <link> generates a browser warning and wastes
           // a high-priority fetch slot.
         ],
+        // JSON-LD structured data — injected in <head> so crawlers and AI
+        // agents (ChatGPT Search, Perplexity, Google SGE) find it immediately,
+        // with zero render-blocking impact.
+        scripts: [schemaMarkupScript],
       };
     },
     shellComponent: RootShell,
